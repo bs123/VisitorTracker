@@ -2,7 +2,7 @@ console.log("VisitorTracker v0.0")
 
 var noble = require('noble')
 var mqtt  = require('mqtt')
-var util = require('util')
+//var util = require('util')
 
 client = mqtt.createClient(1883, 'localhost');
 
