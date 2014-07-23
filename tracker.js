@@ -1,6 +1,9 @@
 console.log("VisitorTracker v0.0")
 
-var noble = require('noble');
+var noble = require('noble')
+var mqtt  = require('mqtt')
+
+client = mqtt.createClient(1883, 'localhost');
 
 noble.on('stateChange', function(state) {
   if (state === 'poweredOn') {
@@ -11,15 +14,6 @@ noble.on('stateChange', function(state) {
 });
 
 noble.on('discover', function(peripheral) {
-    console.log('Found device with local name: ' + peripheral.advertisement.localName);
-    console.log('advertising the following service uuid\'s: ' + peripheral.advertisement.serviceUuids);
-    console.log();
+    client.publish('presence', peripherial);
 });
 
-
-noble.on('scanStart', function(scaned) {
-	console.log("scaned: " + scaned);
-});
-
-
-//noble.startScanning();
