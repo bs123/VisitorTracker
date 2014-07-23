@@ -2,10 +2,24 @@ console.log("VisitorTracker v0.0")
 
 var noble = require('noble');
 
-noble.on('discover', function(peripheral) {
-  console.log(peripheral);
+noble.on('stateChange', function(state) {
+  if (state === 'poweredOn') {
+    noble.startScanning();
+  } else {
+    noble.stopScanning();
+  }
 });
 
-noble.startScanning();
+noble.on('discover', function(peripheral) {
+    console.log('Found device with local name: ' + peripheral.advertisement.localName);
+    console.log('advertising the following service uuid\'s: ' + peripheral.advertisement.serviceUuids);
+    console.log();
+});
 
 
+noble.on('scanStart', function(scaned) {
+	console.log("scaned: " + scaned);
+});
+
+
+//noble.startScanning();
