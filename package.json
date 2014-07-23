@@ -20,5 +20,8 @@
   "license": "Apache2",
   "bugs": {
     "url": "https://github.com/bs123/VisitorTracker/issues"
+  },
+  "dependencies": {
+    "noble": "0.3.1"
   }
 }
